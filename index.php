@@ -125,7 +125,14 @@ echo "<br>";
 echo $comment;
 echo "<br>";
 echo $gender;
+
+echo "today is ". date("y/m/d"). " " . date("l");
 ?>
+
+
+
+
+
 </body>
 </html>
 <!-- PHP date and time  -->
