@@ -53,22 +53,30 @@ echo "<br>";
 <?php
 // define variables and set to empty values
 $name = $email = $gender = $comment = $website = "";
-$nameErr= $emailErr = $genderErr="";
+$nameErr= $emailErr = $websiteErr="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])){
         $nameErr= "Name is required";
-    }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
-        $nameErr= "Only Letter and white space is Allowed";
     }
     else{
         $name = test_input($_POST["name"]);
+        if(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
+        $nameErr= "Only Letter and white space is Allowed";
+    }
     }
     if (empty($_POST["email"])){
         $emailErr = "Email is required";
     }else{
         $email = test_input($_POST["email"]);
+       
     }
-  $website = test_input($_POST["website"]);
+    if(empty($_POST["website"])){
+        $website="";
+    }
+  else{ $website = test_input($_POST["website"]);
+   if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z)-9+&@#\/%=~_|]/i",$website)){
+            $websiteErr = "Invalid URL";
+        }}
   $comment = test_input($_POST["comment"]);
     if (empty($_POST["gender"])){
         $genderErr = "Gender is required";
@@ -90,12 +98,18 @@ function test_input($data) {
     <h4 style="color:red"> * required field</h4>
     Name: <input type="text" name="name"> <span style="color:red"> * <?php echo $nameErr;?> </span><br><br>
     E-mail: <input type="email" name="email"> <span style="color:red"> * <?php echo $emailErr;?></span> <br><br>
-    Website: <input type="text" name="website">  <br><br>
+    Website: <input type="text" name="website"> <span style="color:red">  <?php echo $websiteErr;?></span>  <br><br>
     Comment: <textarea name="comment" rows="5" cols="40"></textarea> <br><br>
     Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender" value="other">Other 
+  <input type="radio" name="gender" 
+  <?php if (isset($gender)&& $gender =="female") echo "checked";?>
+  value="female">Female
+  <input type="radio" name="gender" 
+  <?php if (isset($gender)&& $gender =="male") echo "checked";?>
+  value="male">Male
+  <input type="radio" name="gender" 
+  <?php if (isset($gender)&& $gender =="other") echo "checked";?>
+  value="other">Other 
   <span><?php echo $genderErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">  
@@ -114,3 +128,4 @@ echo $gender;
 ?>
 </body>
 </html>
+<!-- PHP date and time  -->
