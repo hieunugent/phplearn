@@ -127,6 +127,8 @@ echo "<br>";
 echo $gender;
 
 echo "today is ". date("y/m/d"). " " . date("l");
+date_default_timezone_set("America/Los_Angeles");
+echo "time is ". date("h:i:sa");
 ?>
 
 
