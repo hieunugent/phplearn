@@ -57,7 +57,7 @@ $nameErr= $emailErr = $genderErr="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])){
         $nameErr= "Name is required";
-    }else if(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
+    }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$name)){
         $nameErr= "Only Letter and white space is Allowed";
     }
     else{
