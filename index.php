@@ -53,7 +53,7 @@ echo "<br>";
 <?php
 // define variables and set to empty values
 $name = $email = $gender = $comment = $website = "";
-$nameErr= $emailErr = $websiteErr="";
+$nameErr= $emailErr = $websiteErr=$genderErr="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])){
         $nameErr= "Name is required";
@@ -128,7 +128,25 @@ echo $gender;
 
 echo "today is ". date("y/m/d"). " " . date("l");
 date_default_timezone_set("America/Los_Angeles");
-echo "time is ". date("h:i:sa");
+echo "time is ". date("h:i:sa") ."<br>";
+$time =  strtotime("September 20");
+echo date("Y-m-d h:i:sa", $time) ."<br>";
+$time2 = ceil(($time -time())/60/60/24);
+echo "there are ". $time2 . " days until new Year <br>" ;
+
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = " John Doe\n";
+fwrite($myfile, $txt);
+$txt = " Jane Doe\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+$myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
+// echo fread($myfile, filesize("newfile.txt")) . "<br>";
+while(!feof($myfile)){
+    echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+
 ?>
 
 
