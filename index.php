@@ -1,9 +1,14 @@
-<!DOCTYPE html>
 <?php
 $cookie_name = "user";
 $cookie_value = "Alex Porter";
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+setcookie($cookie_name, $cookie_value, time() -(86400 * 30), "/");
 ?>
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+
 <html>
 <body> 
 
@@ -208,7 +213,13 @@ if(!isset($_COOKIE[$cookie_name])) {
 }
 ?>
 
-
+<?php
+    $_SESSION["favcolor"] = " yellow";
+    print_r($_SESSION);
+    session_unset();
+    session_destroy();
+    print_r($_SESSION);
+?>
 </body>
 </html>
 <!-- PHP date and time  -->
