@@ -203,7 +203,7 @@ fclose($myfile);
 ?>
 
 <!-- set cookie -->
-
+<br>
 <?php
 if(!isset($_COOKIE[$cookie_name])) {
   echo "Cookie named '" . $cookie_name . "' is not set!";
@@ -212,7 +212,7 @@ if(!isset($_COOKIE[$cookie_name])) {
   echo "Value is: " . $_COOKIE[$cookie_name];
 }
 ?>
-
+<br>
 <?php
     $_SESSION["favcolor"] = " yellow";
     print_r($_SESSION);
