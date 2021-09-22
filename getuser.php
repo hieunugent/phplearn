@@ -20,13 +20,13 @@ th {text-align: left;}
 <?php
 $q = intval($_GET['q']);
 
-$con = mysqli_connect('localhost:3306','hieunguyen','hieu_password','my_db');
+$con = mysqli_connect('localhost:3306','hieunguyen','hieu_password','mydb');
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
 }
 
 mysqli_select_db($con,"ajax_demo");
-$sql="SELECT * FROM user WHERE id = '".$q."'";
+$sql="SELECT * FROM persons WHERE id = '".$q."'";
 $result = mysqli_query($con,$sql);
 
 echo "<table>
