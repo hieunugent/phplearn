@@ -13,54 +13,51 @@ while(!feof($newPost)){
 }
 
 fclose($newPost);
-
-
-
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
+$outputvalue="";
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
+    $outputvalue= "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
-    echo "File is not an image.";
+    $outputvalue= "File is not an image.";
     $uploadOk = 0;
   }
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
+  $outputvalue= "Sorry, file already exists.";
   $uploadOk = 0;
 }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
+  $outputvalue= "Sorry, your file is too large.";
   $uploadOk = 0;
 }
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $outputvalue= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
+  $outputvalue= "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+    $outputvalue= "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    $outputvalue= "Sorry, there was an error uploading your file.";
   }
 }
 ?>
@@ -73,17 +70,17 @@ if ($uploadOk == 0) {
     </head>
    <body>
        <div>
-           <form action="post.php"  method="post" enctype="multipart/form-data">
-                <h3>Title</h3>
+           <form action=""  method="post" enctype="multipart/form-data">
+               <h3>Title</h3>
                <input type="text" name="title">
                <br>
                <h3>Post Paragraph</h3>
-               <textarea type="text" name="contents" id="" cols="50vw" rows="10"></textarea>
+               <textarea type="text" name="contents" id="" cols="100%" rows="20"></textarea>
                <br>
             Select image to upload:
                <input type="file" name="fileToUpload" id="fileToUpload">
             <br>
-               <input type="submit" >
+               <input type="submit" formaction="main.php" >
            </form>
        </div>
    </body>

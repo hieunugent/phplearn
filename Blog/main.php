@@ -6,7 +6,10 @@
     </head>
    <body>
        <div>
-           <button>add post</button>
+           <form action="" >
+           <input formaction="post.php" type="submit" name="addPost" value="ADD NEW POST" >
+           </form>
        </div>
+       
    </body>
 </html>
