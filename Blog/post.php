@@ -1,18 +1,63 @@
+
+<?php 
+ require __DIR__ .'/vendor/autoload.php';
+
+?>
+<html>
+    <head>
+    <script>
+  
+    </script>
+    </head>
+   <body>
+       <div>
+           <form id="postForm" action="post.php"  method="post" enctype="multipart/form-data">
+               <h3>Title</h3>
+               <input type="text" name="title" id="title" value="<?php if (isset($title) && $success == '') {echo $title;} ?>">
+               <br>
+               <h3>Post Paragraph</h3>
+               <textarea type="text" name="contents"  cols="100%" rows="20"></textarea>
+               <br>
+            Select image to upload:
+               <input type="file" name="fileToUpload" id="fileToUpload">
+            <br>
+               <input type="submit" name="submit"  value="submit" >
+           </form>
+       </div>
+   </body>
+</html>
 <?php
-$filename = $_POST["title"] . ".txt";
-$contents = $_POST["contents"];
+if ($_SERVER['REQUEST_METHOD']=='POST'){
+  try{
+        $connect = new MongoDB\Client("mongodb://localhost:27017");
 
-
-$newPost = fopen($_POST["title"] . ".txt", "w+") or die("Unable to open file!");
-fwrite($newPost, $contents);
-fclose($newPost);
-$newPost = fopen($_POST["title"] . ".txt", "r+") or die("Unable to open file!");
-
-while(!feof($newPost)){
-    echo fgets ($newPost) ."<br>"; 
+        if (isset($_POST["submit"])){
+            $title = $_POST["title"];
+            $journal = $_POST["contents"];
+            if($title !=''){
+                $success = 'success';
+         }
+        else{
+          $success='';
+        }
+        $db = $connect->mongophp->detail;
+        $result = $db->insertOne([
+          "title"=>$title,
+          "journal"=>$journal,
+        ]);
+        echo "successfully";
+        }
+  }catch(Exception $e){
+    echo " there is an error";
+  }
 }
+// $filename = $_POST["title"] . ".txt";
 
-fclose($newPost);
+// $newPost = fopen($_POST["title"] . ".txt", "w+") or die("Unable to open file!");
+// fwrite($newPost, $contents);
+// fclose($newPost);
+// $newPost = fopen($_POST["title"] . ".txt", "r+") or die("Unable to open file!");
+// fclose($newPost);
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -61,27 +106,3 @@ if ($uploadOk == 0) {
   }
 }
 ?>
-
-<html>
-    <head>
-    <script>
-
-    </script>
-    </head>
-   <body>
-       <div>
-           <form action=""  method="post" enctype="multipart/form-data">
-               <h3>Title</h3>
-               <input type="text" name="title">
-               <br>
-               <h3>Post Paragraph</h3>
-               <textarea type="text" name="contents" id="" cols="100%" rows="20"></textarea>
-               <br>
-            Select image to upload:
-               <input type="file" name="fileToUpload" id="fileToUpload">
-            <br>
-               <input type="submit" formaction="main.php" >
-           </form>
-       </div>
-   </body>
-</html>
