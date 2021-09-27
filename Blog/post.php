@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
         if (isset($_POST["submit"])){
             $title = $_POST["title"];
             $journal = $_POST["contents"];
+            
             if($title !=''){
                 $success = 'success';
          }
@@ -58,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 // fclose($newPost);
 // $newPost = fopen($_POST["title"] . ".txt", "r+") or die("Unable to open file!");
 // fclose($newPost);
+
+if ($_POST['fileToUpload']){
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -105,4 +108,6 @@ if ($uploadOk == 0) {
     $outputvalue= "Sorry, there was an error uploading your file.";
   }
 }
+}
+
 ?>
