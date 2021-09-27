@@ -19,7 +19,7 @@
                <textarea type="text" name="contents"  cols="100%" rows="20"></textarea>
                <br>
             Select image to upload:
-               <input type="file" name="fileToUpload" id="fileToUpload">
+               <input type="file" name="fileToUpload" id="fileToUpload" value=null>
             <br>
                <input type="submit" name="submit"  value="submit" >
            </form>
