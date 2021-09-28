@@ -1,3 +1,7 @@
+<?php
+  require __DIR__ .'/vendor/autoload.php';
+  
+?>
 <html>
     <head>
     <script>
@@ -7,15 +11,23 @@
    <body>
        <div>
            <form action="" >
-           <input formaction="post.php" type="submit" name="addPost" value="ADD NEW POST" >
+           <input formaction="post.php" type="submit" name="addPost" value="Add new post" >
            </form>
        </div>
-    <div>
-        <h3>Title of the post</h3>
-        <p> What is Lorem Ipsum?
-         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+       <?php
+       $connect = new MongoDB\Client("mongodb://localhost:27017");
+       $db=$connect->mongophp->detail;
+       $cursor = $db->find();
+       foreach ($cursor as $obj){ ?>
+          <div>
+        <h3><?php echo $obj["_id"] ?></h3>
+        <h3><?php echo $obj["title"] ?></h3>
+        <p> <?php echo $obj["journal"]?> </p>
         
-    </div>
-       
+        
+          </div>
+          
+       <?php }?>
+        
    </body>
 </html>
