@@ -1,20 +1,13 @@
 <?php
   require __DIR__ .'/vendor/autoload.php';
+  require __DIR__ .'/delete.php';
   session_start();
-  function php_delete_func(){
-    echo "True";
-  }
+  $_SESSION['valueDelete'] = '';
   $resultTest= "False";
-
 ?>
 <html>
     <head>
     <script>
-      function test(){
-        document.write()
-      });
-      }
-     
     </script>
     </head>
    <body>
@@ -32,17 +25,16 @@
        
       
        foreach ($cursor as $obj){ ?>
-        <div id="$obj["id"]" >
+        <div >
         <h3  name="itemId"><?php echo $obj["_id"] ?></h3>
         <h3><?php echo $obj["title"] ?></h3>
         <p> <?php echo $obj["journal"]?></p>
-        <form action="main.php"> 
-        <button  onclick="test()" > 
-           button
-        </button>
-
-        </form>
-       
+        
+        <a href="delete.php?varname=<?php echo $obj["_id"] ?>" > 
+        <Button>
+        Delete
+        </Button> </a>
+        <
         </div>
           
        <?php
