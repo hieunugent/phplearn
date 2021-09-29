@@ -10,3 +10,4 @@
     - return to mainpage for all post after post
 # NOTE:
 - to read data with ID on mongodb , we need to cast it in to new MongoDB\BSON\ObjectId($value), this way make the string that we pass in php will have same class with string ID on mongoDB ID 
+- name of attribute is value for get/post server

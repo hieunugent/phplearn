@@ -1,5 +1,5 @@
 <?php
-   
+   echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
        try{
             $iddelete = $_GET["varname"];
             echo $iddelete;
@@ -16,9 +16,12 @@
             printf("Delele % d document(s) \n", $result->getDeletedCount());
         }catch(Exception $e){
             echo "Error when Delete" . $e;  }
-    
+  
     
 ?>
 
 <hr>
 <p><a href="main.php">back to the main page</a></p>
+
+
+

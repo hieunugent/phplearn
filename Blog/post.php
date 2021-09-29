@@ -1,16 +1,16 @@
 
 <?php 
  require __DIR__ .'/vendor/autoload.php';
- $title = $titleErr = "";
- $journal = $journalErr="";
+ $title = $titleErr = '';
+ $journal = $journalErr='';
+ $connect = new MongoDB\Client("mongodb://localhost:27017");
 ?>
 
 <?php
-
+echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
 if ($_SERVER['REQUEST_METHOD']=='POST'){
+  
   try{
-        $connect = new MongoDB\Client("mongodb://localhost:27017");
-
         if (isset($_POST["submit"])){
            if(empty($_POST['title'])){
               $titleErr = "Title field is Required";
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
             $journal = $_POST["contents"];
            } 
         
-        if ($title != ''&& $journal!=''){
+        if ($title !='' && $journal!=''){
           $db = $connect->mongophp->detail;
           $result = $db->insertOne([
             "title"=>$title,
@@ -93,16 +93,16 @@ if ($uploadOk == 0) {
   }
 }
 }
-if ($title && $journal){
-  header('location:main.php');
-}
+// if ($title && $journal){
+//   header('location:main.php');
+// }
 ?>
 
 <html>
     <head>
     <script>
         .error{
-          color: red;
+          color: #FF0000;
         }
     </script>
     </head>
@@ -110,8 +110,8 @@ if ($title && $journal){
        <div>
            <form id="postForm" action="post.php"  method="post" enctype="multipart/form-data">
                <h3>Title</h3>
-               <input  type="text" name="title" id="title" value="<?php if (isset($title)) {echo $title;} ?>">
-               <span class="error">* <?php echo $titleErr ;?></span>
+               <input  type="text" name="title" id="title" >
+               <span class="error"> * <?php echo $titleErr ;?></span>
                <br>
                <h3>Post Paragraph</h3>
                <textarea  type="text" name="contents"  cols="100%" rows="20"></textarea>
@@ -119,7 +119,8 @@ if ($title && $journal){
                <br>
             Select image to upload:
                <input type="file" name="fileToUpload" id="fileToUpload" value=null>
-               <input type="submit" name="POST"  value="submit" >
+               <br>
+               <input type="submit" name="submit"  value="submit" >
            </form>
            <span>
            <form action="main.php">
