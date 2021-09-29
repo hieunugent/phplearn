@@ -93,9 +93,9 @@ if ($uploadOk == 0) {
   }
 }
 }
-// if ($title && $journal){
-//   header('location:main.php');
-// }
+if ($title && $journal){
+  header('location:main.php');
+}
 ?>
 
 <html>

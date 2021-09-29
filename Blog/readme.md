@@ -3,6 +3,9 @@
     - view all the post by short contents
     - view delete each post 
     - choose to see full post
+    - delete item
+    - update item
+    
 - post page:
     - post contents on this page
     - check the contents is not empty 

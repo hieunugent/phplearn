@@ -1,5 +1,4 @@
 <?php
-echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
   require __DIR__ .'/vendor/autoload.php';
   require __DIR__ .'/utility.php';
 ?>
@@ -7,7 +6,14 @@ echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
     <head>
     <script>
     
+    
     </script>
+    <style>
+      .myBtn{
+        text-decoration:none;
+      }
+
+    </style>
     </head>
    <body>
        <div>
@@ -23,32 +29,26 @@ echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
      
        if(isset($_GET["vardelete"])){
          deleteOneElement($_GET["vardelete"]);
-        
+         header("location:main.php");
        }
       
        foreach ($cursor as $obj){ ?>
         <div >
-        <h3  name="itemId"><?php echo $obj["_id"] ?></h3>
         <h3><?php echo $obj["title"] ?></h3>
         <p> <?php echo $obj["journal"]?></p>
-        <a href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button>Delete</Button> </a>
+        <a class="myBtn" href="update.php?varUpdate=<?php echo $obj["_id"] ?>"><button>Edit </button></a>
 
-        <a href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button>Delete On Main</button></a>
+        <a class="myBtn" href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button>Delete</Button> </a>
+
+        <a class="myBtn" href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button>Delete On Main</button></a>
         </div>
           
      
        <?php
-      
+
       
       }?>
      
-          
-      
-      
-      
-   
-
-
 
          </div>
    </body>
