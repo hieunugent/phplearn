@@ -110,7 +110,7 @@ if ($title && $journal){
        <div>
            <form id="postForm" action="post.php"  method="post" enctype="multipart/form-data">
                <h3>Title</h3>
-               <input  type="text" name="title" id="title" >
+               <textarea  type="text" name="title" id="title" cols="30" rows="1"> </textarea>
                <span class="error"> * <?php echo $titleErr ;?></span>
                <br>
                <h3>Post Paragraph</h3>

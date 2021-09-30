@@ -34,6 +34,7 @@
       
        foreach ($cursor as $obj){ ?>
         <div >
+        <h3><?php echo $obj["_id"] ?></h3>
         <h3><?php echo $obj["title"] ?></h3>
         <p> <?php echo $obj["journal"]?></p>
         <a class="myBtn" href="update.php?varUpdate=<?php echo $obj["_id"] ?>"><button>Edit </button></a>
