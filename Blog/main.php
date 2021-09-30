@@ -12,11 +12,19 @@
       .myBtn{
         text-decoration:none;
       }
-
+      .journalOutput{
+        
+        width: 50%;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+      }
+     
     </style>
+     <link rel="stylesheet" href="views/post.css">
     </head>
-   <body>
-       <div>
+   <body class="page">
+       <div class="submitBtn">
            <form action="post.php" >
            <input type="submit" name="addPost" value="Add" >
            </form>
@@ -33,18 +41,15 @@
        }
       
        foreach ($cursor as $obj){ ?>
-        <div >
-        <h3><?php echo $obj["_id"] ?></h3>
+        <div class="displayItem">
+        <!-- <h3><?php echo $obj["_id"] ?></h3> -->
         <h3><?php echo $obj["title"] ?></h3>
-        <p> <?php echo $obj["journal"]?></p>
-        <a class="myBtn" href="update.php?varUpdate=<?php echo $obj["_id"] ?>"><button>Edit </button></a>
-
-        <a class="myBtn" href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button>Delete</Button> </a>
-
-        <a class="myBtn" href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button>Delete On Main</button></a>
+        <p class="journalOutput"> <?php echo $obj["journal"]?></p>
+        <a class="myBtn" href="update.php?varUpdate=<?php echo $obj["_id"]?>"><button class="myBtn">Edit </button></a>
+        <a class="myBtn" href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button class="myBtn">Delete</Button></a>
+        <a class="myBtn" href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button class="myBtn">Delete On Main</button></a>
+        <a class="myBtn" href="view.php?valueId=<?php echo $obj["_id"] ?>"> <button class="myBtn">View</button></a>
         </div>
-          
-     
        <?php
 
       
