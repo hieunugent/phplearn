@@ -101,10 +101,13 @@ if ($title && $journal){
 <html>
     <head>
     <script>
+        
+    </script>
+    <style>
         .error{
           color: #FF0000;
         }
-    </script>
+    </style>
     </head>
    <body>
        <div>
