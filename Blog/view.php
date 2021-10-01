@@ -26,8 +26,8 @@ $journal = $cursor['journal'];
 </head>
 <body class="page">
     <div >
-    <h3 class="blogTitle"><?php echo $cursor['title'] ?></h3>
-    <p class="blogJournal"><?php echo $cursor['journal']?></p>
+    <h3 class="viewTitle"><?php echo $cursor['title'] ?></h3>
+    <p class="viewJournal"> <img class="viewimage" src="https://picsum.photos/200" alt="postimage" ><?php echo $cursor['journal']?></p>
     </div>
     <hr>
     <a href="main.php"><button class="myBtn">HOME PAGE</button></a>

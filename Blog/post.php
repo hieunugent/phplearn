@@ -45,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 // fclose($newPost);
 
 if (isset($_POST['fileToUpload'])){
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+// $target_dir = "uploads/";
+// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$outputvalue="";
+// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// $outputvalue="";
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -62,11 +62,11 @@ if(isset($_POST["submit"])) {
   }
 }
 
-// Check if file already exists
-if (file_exists($target_file)) {
-  $outputvalue= "Sorry, file already exists.";
-  $uploadOk = 0;
-}
+// // Check if file already exists
+// if (file_exists($target_file)) {
+//   $outputvalue= "Sorry, file already exists.";
+//   $uploadOk = 0;
+// }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -75,22 +75,24 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  $outputvalue= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
+// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+// && $imageFileType != "gif" ) {
+//   $outputvalue= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//   $uploadOk = 0;
+// }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
   $outputvalue= "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    $outputvalue= "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-  } else {
-    $outputvalue= "Sorry, there was an error uploading your file.";
-  }
+  // if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+  //   $outputvalue= "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+  // } else {
+  //   $outputvalue= "Sorry, there was an error uploading your file.";
+  // }
+
+  
 }
 }
 if ($title && $journal){
@@ -108,26 +110,27 @@ if ($title && $journal){
           color: #FF0000;
         }
     </style>
+     <link rel="stylesheet" href="views/post.css">
     </head>
-   <body>
+   <body class="page">
        <div>
            <form id="postForm" action="post.php"  method="post" enctype="multipart/form-data">
                <h3>Title</h3>
-               <textarea  type="text" name="title" id="title" cols="30" rows="1"> </textarea>
+               <textarea class="contentInput" type="text" name="title" id="title" cols="90" rows="1"> </textarea>
                <span class="error"> * <?php echo $titleErr ;?></span>
                <br>
                <h3>Post Paragraph</h3>
-               <textarea  type="text" name="contents"  cols="100%" rows="20"></textarea>
+               <textarea  class="contentInput"type="text" name="contents"  cols="90" rows="20"></textarea>
                <span class="error">* <?php echo $journalErr;?></span>
                <br>
             Select image to upload:
-               <input type="file" name="fileToUpload" id="fileToUpload" value=null>
+               <input class="uploadFIle" type="file" name="fileToUpload" id="fileToUpload" value=null>
                <br>
-               <input type="submit" name="submit"  value="submit" >
+               <input class="submitForm" type="submit" name="submit"  value="submit" >
            </form>
            <span>
            <form action="main.php">
-              <input type="submit" name="Back" value="cancel" action="main.php">
+              <input  class="cancelForm" type="submit" name="Back" value="cancel" action="main.php">
            </form>
            </span>
          

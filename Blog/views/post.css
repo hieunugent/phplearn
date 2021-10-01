@@ -1,15 +1,16 @@
 .page {
     text-align: center;
-    background-color: #F5F5F5;
+    background-image: linear-gradient(120deg, #E5F6DF, #E5F6DF, #90EE91);
+    color: darkgreen;
 }
 
-.blogTitle {
+.viewTitle {
     color: darkgreen;
     text-shadow: 1px 1px 2px green;
     font-size: 5vw;
 }
 
-.blogJournal {
+.viewJournal {
     color: black;
     background-color: #E5F6DF;
     text-align: left;
@@ -18,17 +19,126 @@
 .myBtn {
     color: darkgreen;
     border-radius: 2rem;
-    box-shadow: 2px 2px 3px green;
+    box-shadow: 2px 2px 3px rgb(20, 20, 20);
 }
 
-.submitBtn {
-    text-align: right;
+.navbar_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #90EE91;
+    padding: 1px;
+    margin: 0 0 3em 0;
+    box-shadow: 2px 2px 3px green;
+    border-radius: 1rem;
+}
+
+.navLogo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    justify-content: space-around;
+}
+
+.navBtnA {
+    color: darkgreen;
+    font-weight: bold;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 25px;
+    margin-right: 20px;
+}
+
+.navTilte {
+    margin-left: 20px;
+    color: darkgreen;
+}
+
+.mainpage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .displayItem {
-    width: 20vw;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
     border-radius: 1rem;
-    box-shadow: 2px 2px 3px green, -2px -2px 3px green;
+    box-shadow: 2px 2px 3px green, -2px -2px 3px lightgreen;
     padding: 20px;
     margin: 10px;
+}
+
+.titleOutput {
+    width: auto;
+    height: 1em;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.journalOutput {
+    height: 10em;
+    line-height: 1em;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
+
+.postimage {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.viewimage {
+    float: left;
+    width: 30vw;
+    height: 30vh;
+    margin: 5px;
+}
+
+.button_group {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.submitForm {
+    margin-top: 20px;
+    max-width: 60%;
+    width: 50%;
+    background-color: #90EE91;
+    border-radius: 1rem;
+    border-color: aliceblue;
+    height: 30px;
+    color: darkgreen;
+}
+
+.cancelForm {
+    margin-top: 20px;
+    max-width: 60%;
+    height: 30px;
+    width: 50%;
+    background-color: #90EE91;
+    border-radius: 1rem;
+    border-color: aliceblue;
+    color: darkgreen;
+}
+
+.contentInput {
+    border-radius: 1rem;
+    width: auto;
+}
+
+input[type=file]::file-selector-button {
+    color: darkgreen;
+    background-color: #90EE91;
+    border-radius: 1rem;
+    border-color: aliceblue;
+    height: 30px;
 }
