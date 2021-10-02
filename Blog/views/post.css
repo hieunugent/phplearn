@@ -4,6 +4,14 @@
     color: darkgreen;
 }
 
+.viewpage {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: linear-gradient(120deg, #E5F6DF, #E5F6DF, #90EE91);
+    color: darkgreen;
+}
+
 .viewTitle {
     color: darkgreen;
     text-shadow: 1px 1px 2px green;
@@ -133,6 +141,11 @@
 .contentInput {
     border-radius: 1rem;
     width: auto;
+}
+
+.viewcontent {
+    margin-top: auto;
+    margin-bottom: 2rem;
 }
 
 input[type=file]::file-selector-button {

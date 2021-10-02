@@ -49,14 +49,27 @@
         <!-- <h3><?php echo $obj["_id"] ?></h3> -->
         <h3 class="titleOutput"><?php echo $obj["title"] ?></h3>
         <div>
-        
-         <p class="journalOutput">  <img class="postimage" src="https://picsum.photos/200" alt="postimage" > <?php echo $obj["journal"]?></p>
-       </div>
+         
+         <p class="journalOutput">  
+           <?php
+            if ($obj["cover"]!=""){ ?>
+             <img class="postimage" src="data:jpeg;base64,<?=base64_encode($obj->cover->getData())?>"alt="postimage" >
+           <?php }
+           else{ ?>
+              <img class="postimage" src="https://picsum.photos/200/300" alt="postimage" >
+          <?php  } 
+           ?>
+          
+           
+           <?php echo $obj["journal"]?>
+          
+          </p>
+       </div> 
       
         <div class="button_group">
         <a class="myBtn" href="update.php?varUpdate=<?php echo $obj["_id"]?>"><button class="myBtn">Edit </button></a>
-        <a class="myBtn" href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button class="myBtn">Delete</Button></a>
-        <!-- <a class="myBtn" href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button class="myBtn">Delete On Main</button></a> -->
+        <!-- <a class="myBtn" href="delete.php?varname=<?php echo $obj["_id"] ?>" > <Button class="myBtn">Delete</Button></a> -->
+        <a class="myBtn" href="main.php?vardelete=<?php echo $obj["_id"] ?>"><button class="myBtn">Delete</button></a>
         <a class="myBtn" href="view.php?valueId=<?php echo $obj["_id"] ?>"> <button class="myBtn">View</button></a>
         
         </div>

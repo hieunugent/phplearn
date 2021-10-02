@@ -24,10 +24,20 @@ $journal = $cursor['journal'];
     <title>Document</title>
     <link rel="stylesheet" href="views/post.css">
 </head>
-<body class="page">
-    <div >
+<body class="viewpage">
+    <div class="viewcontent" >
     <h3 class="viewTitle"><?php echo $cursor['title'] ?></h3>
-    <p class="viewJournal"> <img class="viewimage" src="https://picsum.photos/200" alt="postimage" ><?php echo $cursor['journal']?></p>
+    <p class="viewJournal">
+         <?php
+            if ($cursor["cover"]!=""){ ?>
+             <img class="viewimage" src="data:jpeg;base64,<?=base64_encode($cursor->cover->getData())?>" alt="postimage" >
+           <?php }
+           else{ ?>
+              <img class="viewimage" src="https://picsum.photos/200" alt="postimage" >
+          <?php  } 
+           ?>
+         
+         <?php echo $cursor['journal']?></p>
     </div>
     <hr>
     <a href="main.php"><button class="myBtn">HOME PAGE</button></a>
