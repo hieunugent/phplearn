@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
           $result = $db->insertOne([
             "title"=>$title,
             "journal"=>$journal,
-            "cover"=>  (isset($_POST['fileToUpload'])) ? new MongoDB\BSON\Binary(file_get_contents($_FILES["fileToUpload"]["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC) : new MongoDB\BSON\Binary(file_get_contents("uploads/blogs.jpg"), MongoDB\BSON\Binary::TYPE_GENERIC) ,
+            "cover"=>  new MongoDB\BSON\Binary(file_get_contents((isset($_POST['fileToUpload']))? $_FILES["fileToUpload"]["tmp_name"]:""), MongoDB\BSON\Binary::TYPE_GENERIC),
           ]);
           echo "successfully";
         }
