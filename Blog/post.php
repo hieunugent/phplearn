@@ -3,7 +3,9 @@
  require __DIR__ .'/vendor/autoload.php';
  $title = $titleErr = '';
  $journal = $journalErr='';
+ $image ="";
  $connect = new MongoDB\Client("mongodb://localhost:27017");
+ 
 ?>
 
 <?php
@@ -22,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
            }else{
             $journal = $_POST["contents"];
            } 
-        
-        if ($title !='' && $journal!=''){
+          if ($title !='' && $journal!=''){
           $db = $connect->mongophp->detail;
           $result = $db->insertOne([
             "title"=>$title,
             "journal"=>$journal,
-            "cover"=>  (isset($_POST['fileToUpload'])) ? new MongoDB\BSON\Binary(file_get_contents($_FILES["fileToUpload"]["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC) : new MongoDB\BSON\Binary(file_get_contents("uploads/blogs.jpg"), MongoDB\BSON\Binary::TYPE_GENERIC) ,
+            "cover"=> new MongoDB\BSON\Binary(file_get_contents($_FILES["fileToUpload"]["size"] > 0?
+              $_FILES["fileToUpload"]["tmp_name"]:"https://picsum.photos/200/300"), MongoDB\BSON\Binary::TYPE_GENERIC),
           ]);
           echo "successfully";
         }
@@ -47,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 
 if (isset($_POST['fileToUpload'])){
 // $target_dir = "uploads/";
+
 // $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -125,7 +128,7 @@ if ($title && $journal){
                <span class="error">* <?php echo $journalErr;?></span>
                <br>
             Select image to upload:
-               <input class="uploadFIle" type="file" name="fileToUpload" id="fileToUpload" value="/uploads/blog.jpg">
+               <input class="uploadFIle" type="file" name="fileToUpload" id="fileToUpload" >
                <br>
                <input class="submitForm" type="submit" name="submit"  value="submit" >
            </form>
