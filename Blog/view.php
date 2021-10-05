@@ -41,7 +41,7 @@ $journal = $cursor['journal'];
     </div>
     <hr>
     <a href="main.php"><button class="myBtn">HOME PAGE</button></a>
-    <a class="myBtn" href="delete.php?varname=<?php echo $idUpdate ?>" > <Button class="myBtn">Delete</Button> </a>
+    <a href="delete.php?varname=<?php echo $idUpdate ?>" > <Button class="myBtn">Delete</Button> </a>
     
 </body>
 </html>

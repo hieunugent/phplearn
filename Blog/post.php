@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
            if(empty($_POST['title'])){
               $titleErr = "Title field is Required";
            }else{
-            $title = $_POST["title"];
+            $title = ucwords($_POST["title"]);
            }
            if(empty($_POST['contents'])){
              $journalErr = "This Field is Required";
@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
           $result = $db->insertOne([
             "title"=>$title,
             "journal"=>$journal,
-
             "cover"=> new MongoDB\BSON\Binary(file_get_contents($_FILES["fileToUpload"]["size"] > 0?
               $_FILES["fileToUpload"]["tmp_name"]:"https://picsum.photos/200/300"), MongoDB\BSON\Binary::TYPE_GENERIC),
 
@@ -122,7 +121,7 @@ if ($title && $journal){
        <div>
            <form id="postForm" action="post.php"  method="post" enctype="multipart/form-data">
                <h3>Title</h3>
-               <textarea class="contentInput" type="text" name="title" id="title" cols="90" rows="1"> </textarea>
+               <textarea class="contentInput" type="text" name="title" id="title" cols="90" rows="1" > </textarea>
                <span class="error"> * <?php echo $titleErr ;?></span>
                <br>
                <h3>Post Paragraph</h3>

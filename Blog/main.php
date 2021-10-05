@@ -5,8 +5,8 @@
 <html>
     <head>
     <script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
+    function myFunction(item) {
+        document.getElementById(item).classList.toggle("show");
      }
     
     </script>
@@ -51,8 +51,8 @@
             <div class="main_topdisplayItem">
                   <h3 class="main_titleOutput"><?php echo $obj["title"] ?></h3>
                   <div class="main_dropdown">
-                      <button onclick="myFunction()" class='main_dropBtn'> ⋮ </button>
-                      <div id="myDropdown" class="main_dropdown-content">
+                      <button onclick='myFunction(`${<?php echo $obj["_id"]?>}`)' class='main_dropBtn'> ⋮ </button>
+                      <div id="${<?php echo $obj["_id"]?>}" class="main_dropdown-content">
                             <a  href="update.php?varUpdate=<?php echo $obj["_id"]?>">Edit </a>
                             <a  href="main.php?vardelete=<?php echo $obj["_id"] ?>">Delete</a>
                             <a  href="view.php?valueId=<?php echo $obj["_id"] ?>"> View</a>
