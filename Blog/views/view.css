@@ -1,0 +1,61 @@
+.page {
+    text-align: center;
+    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
+    color: darkgreen;
+}
+
+.view_navbar_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #90EE91;
+    padding: 1px;
+    margin: 0 0 3em 0;
+    box-shadow: 2px 2px 3px green;
+    border-radius: 1rem;
+}
+
+.view_navTilte {
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    margin: 1em;
+}
+
+.view_navLogo {
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    margin: .3em;
+}
+
+.viewpage {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
+    color: darkgreen;
+}
+
+.viewTitle {
+    color: darkgreen;
+    text-shadow: 1px 1px 2px green;
+    font-size: 5vw;
+}
+
+.viewJournal {
+    color: black;
+    background-color: #E5F6DF;
+    text-align: left;
+}
+
+.viewimage {
+    float: left;
+    width: 30vw;
+    height: 30vh;
+    margin: 5px;
+}
+
+.myBtn {
+    color: darkgreen;
+}

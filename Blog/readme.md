@@ -23,3 +23,5 @@
 - name of attribute is value for get/post server
 - CRUD
 - look for image storage choose mongoDB
+- UX for button 
+- logging user, update so every one could see your post, but only you can edit and delete it, it must underyour username

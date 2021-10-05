@@ -6,13 +6,13 @@
             echo  "<hr>"; 
             require __DIR__ .'/vendor/autoload.php';
             $connect = new MongoDB\Client("mongodb://localhost:27017");
-            echo "connect to database successfull <br>";
+            // echo "connect to database successfull <br>";
             $db=$connect->mongophp;
-            echo "Database mongophp selected <br>";
+            // echo "Database mongophp selected <br>";
             $collections=$db->detail;
-            echo "collection selected successfull <br>";
+            // echo "collection selected successfull <br>";
             $result = $collections->deleteOne(['_id' => new MongoDB\BSON\ObjectId($iddelete)]);
-            echo "SUCCESS  Delete  <br>" ;
+            // echo "SUCCESS  Delete  <br>" ;
             printf("Delele % d document(s) \n", $result->getDeletedCount());
         }catch(Exception $e){
             echo "Error when Delete" . $e;  }

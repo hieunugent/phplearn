@@ -22,9 +22,29 @@ $journal = $cursor['journal'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="views/post.css">
+    <link rel="stylesheet" href="views/view.css">
+    <style>
+      .myBtn{
+        text-decoration:none;
+      }
+      .logoimage{
+        width: 40px;
+        height: 40px;
+        border-radius:2rem
+      }
+    
+    </style>
 </head>
 <body class="viewpage">
+<div class="view_navbar_section">
+              <div class="view_navTilte">
+              <a href="main.php" class="myBtn">HOME PAGE</a>
+              </div>
+              <div class="view_navLogo" >
+                    <img class="logoimage" src="/uploads/blog.jpg" alt="logo">
+              </div>
+       </div>
+
     <div class="viewcontent" >
     <h3 class="viewTitle"><?php echo $cursor['title'] ?></h3>
     <p class="viewJournal">
@@ -40,7 +60,7 @@ $journal = $cursor['journal'];
          <?php echo $cursor['journal']?></p>
     </div>
     <hr>
-    <a href="main.php"><button class="myBtn">HOME PAGE</button></a>
+    
     <a href="delete.php?varname=<?php echo $idUpdate ?>" > <Button class="myBtn">Delete</Button> </a>
     
 </body>
