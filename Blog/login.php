@@ -13,12 +13,16 @@ if (isset($_POST['submit'])){
         $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
         $user = $db->findOne(['username'=>$_POST['username']]);
 
-        if ($user){
-            echo (String)$user->password;
+        // if ($user){
+        //     echo $user->password;
+        // }else{
+        //     echo "notfound any";
+        // }
+        if (password_verify($pwd_pepper2, $pwd_hashed)){
+                 echo "Password matches";
         }else{
-            echo "notfound any";
+                  echo "Password incorrect";
         }
-     
       
 
     }
