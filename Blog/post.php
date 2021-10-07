@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
            } 
           if ($title !='' && $journal!=''){
           
-          $date = new DateTime();  
-          $value =  $date->getTimestamp();
+          $date = new DateTime("now", new DateTimeZone('America/Los_Angeles'));  
+          $value =  $date->getTimestamp(). "000";
           $db = $connect->mongophp->detail;
           $result = $db->insertOne([
             "title"=>$title,
