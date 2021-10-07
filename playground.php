@@ -1,12 +1,11 @@
 <?php
-echo easter_date() ."<br />";
-
-echo date("M-d-Y",easter_date()) ."<br />";
-echo date("M-d-Y",easter_date(1999)) . "<br/>";
 
 
+$date = new DateTime('now');
+$value =  $date->getTimestamp()+"000";
+echo date_format($date, 'Y-m-d H:i:s');
+$utcdatetime = new MongoDB\BSON\UTCDateTime($value);
+$datetime = $utcdatetime->toDateTime();
+echo $datetime->format('r');
 
-$str = "Visited w3schools in w3schools the website of ";
-$pattern = "/w3schools/i";
-echo preg_match_all($pattern, $str);
 ?>

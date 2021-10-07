@@ -25,13 +25,16 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
             $journal = $_POST["contents"];
            } 
           if ($title !='' && $journal!=''){
+          
+          $date = new DateTime();  
+          $value =  $date->getTimestamp();
           $db = $connect->mongophp->detail;
           $result = $db->insertOne([
             "title"=>$title,
             "journal"=>$journal,
             "cover"=> new MongoDB\BSON\Binary(file_get_contents($_FILES["fileToUpload"]["size"] > 0?
               $_FILES["fileToUpload"]["tmp_name"]:"https://picsum.photos/200/300"), MongoDB\BSON\Binary::TYPE_GENERIC),
-
+            "timestamp"=> new MongoDB\BSON\UTCDateTime($value),
           ]);
           echo "successfully";
         }

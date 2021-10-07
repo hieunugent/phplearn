@@ -9,7 +9,7 @@
           function myFunction(value) {
             document.getElementById(value).classList.toggle("show");          
         }
-        
+
     </script>
     <style>
       .myBtn{
@@ -51,6 +51,10 @@
         <!-- <h3><?php echo $obj["_id"] ?></h3> -->
             <div class="main_topdisplayItem">
                   <h3 class="main_titleOutput"><?php echo $obj["title"] ?></h3>
+                  <p><?php $date = $obj["timestamp"]->toDateTime();
+                        
+                     
+                   ?></p>
                   <div class="main_dropdown">
                       <button onclick='myFunction(value)' class='main_dropBtn'  value ="<?php echo $obj["_id"]?>"> ⋮ </button>
                       <div id="<?php echo $obj["_id"]?>" class="main_dropdown-content">
