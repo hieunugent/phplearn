@@ -1,11 +1,14 @@
 :root {
     --main-text-color: black;
     --main_background-color: #FFDFDF;
+    --background-image-temp: linear-gradient(120deg, white, #FFDFDF);
+    --box-shadow-temp: 2px 2px 3px #FFDFDF;
+    --box-shadow-temp-2: 2px 2px 3px grey, -2px -2px 3px lightgray;
 }
 
 .page {
     text-align: center;
-    background-image: linear-gradient(120deg, white, #FFDFDF);
+    background-image: var(--background-image-temp);
     color: var(--main-text-color);
 }
 
@@ -22,7 +25,7 @@
     background-color: var(--main_background-color);
     padding: 1px;
     margin: 0 0 3em 0;
-    box-shadow: 2px 2px 3px #FFDFDF;
+    box-shadow: var(--box-shadow-temp);
     border-radius: 1rem;
 }
 
@@ -61,7 +64,7 @@
     height: 500px;
     overflow: hidden;
     border-radius: 1rem;
-    box-shadow: 2px 2px 3px grey, -2px -2px 3px lightgray;
+    box-shadow: var(--box-shadow-temp-2);
     padding: 20px;
     margin: 10px;
     margin-bottom: 45px;
@@ -164,4 +167,11 @@
 
 .show {
     display: block;
+}
+
+.dateNtime>p {
+    margin-top: 0;
+    margin-left: 0px;
+    font-style: italic;
+    float: left;
 }

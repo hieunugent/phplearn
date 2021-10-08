@@ -39,8 +39,8 @@
        <?php
        $connect = new MongoDB\Client("mongodb://localhost:27017");
        $db=$connect->mongophp->detail;
-       $cursor = $db->find();
-     
+       $cursor = $db->find([], ['sort'=>['timestamp'=>-1]]);
+       
        if(isset($_GET["vardelete"])){
          deleteOneElement($_GET["vardelete"]);
          header("location:main.php");
@@ -50,13 +50,7 @@
         <div class="main_displayItem">
         <!-- <h3><?php echo $obj["_id"] ?></h3> -->
             <div class="main_topdisplayItem">
-                  <h3 class="main_titleOutput"><?php echo $obj["title"] ?></h3>
-                  <p><?php $date = $obj["timestamp"]->toDateTime();
-                    
-                      $date->setTimezone(new DateTimeZone('America/Los_Angeles'));
-                      echo date_format($date, 'Y-m-d H:i:s');   
-                     
-                   ?></p>
+                  <h3 class="main_titleOutput"><?php echo $obj["title"] ?></h3>  
                   <div class="main_dropdown">
                       <button onclick='myFunction(value)' class='main_dropBtn'  value ="<?php echo $obj["_id"]?>"> ⋮ </button>
                       <div id="<?php echo $obj["_id"]?>" class="main_dropdown-content">
@@ -66,7 +60,14 @@
                       </div>
                  </div>
             </div>
-           
+           <div class="dateNtime">
+           <p><?php $date = $obj["timestamp"]->toDateTime();
+                    
+                    $date->setTimezone(new DateTimeZone('America/Los_Angeles'));
+                    echo date_format($date, 'g:i:s A \o\n l jS F Y');   
+                   
+                 ?></p>
+           </div>
             <div class="main_journalOutput">   
                 <p >  
                       

@@ -1,43 +1,51 @@
+:root {
+    --post-text-color: black;
+    --post-bg-color: #FFDFDF;
+    --background-image-temp: linear-gradient(120deg, white, #FFDFDF);
+    --box-shadow-temp: 2px 2px 3px #FFDFDF;
+    --box-shadow-temp-2: 2px 2px 3px grey, -2px -2px 3px lightgray;
+}
+
 .page {
     text-align: center;
-    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
-    color: darkgreen;
+    background-image: var(--background-image-temp);
+    color: var(--post-text-color);
 }
 
 .viewpage {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
-    color: darkgreen;
+    background-image: var(--background-image-temp);
+    color: var(--post-text-color);
 }
 
 .viewTitle {
-    color: darkgreen;
+    color: var(--post-text-color);
     text-shadow: 1px 1px 2px green;
     font-size: 5vw;
 }
 
 .viewJournal {
     color: black;
-    background-color: #E5F6DF;
+    background-color: var(--post-bg-color);
     text-align: left;
 }
 
 .myBtn {
-    color: darkgreen;
+    color: var(--post-text-color);
     border-radius: 2rem;
-    box-shadow: 2px 2px 3px rgb(20, 20, 20);
+    box-shadow: var(--box-shadow-temp-2);
 }
 
 .navbar_section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #90EE91;
+    background-color: var(--post-bg-color);
     padding: 1px;
     margin: 0 0 3em 0;
-    box-shadow: 2px 2px 3px green;
+    box-shadow: var(--box-shadow-temp-2);
     border-radius: 1rem;
 }
 
@@ -48,7 +56,7 @@
 }
 
 .navBtnA {
-    color: darkgreen;
+    color: var(--post-text-color);
     font-weight: bold;
     border-radius: 1rem;
     text-align: center;
@@ -59,7 +67,7 @@
 
 .navTilte {
     margin-left: 20px;
-    color: darkgreen;
+    color: var(--post-text-color);
 }
 
 .mainpage {
@@ -76,7 +84,7 @@
     height: 500px;
     overflow: hidden;
     border-radius: 1rem;
-    box-shadow: 2px 2px 3px green, -2px -2px 3px lightgreen;
+    box-shadow: var(--box-shadow-temp-2);
     padding: 20px;
     margin: 10px;
     margin-bottom: 45px;
@@ -129,11 +137,11 @@
     margin-top: 20px;
     max-width: 60%;
     width: 50%;
-    background-color: #90EE91;
+    background-color: var(--post-bg-color);
     border-radius: 1rem;
     border-color: aliceblue;
     height: 30px;
-    color: darkgreen;
+    color: var(post-text-color);
 }
 
 .cancelForm {
@@ -141,14 +149,14 @@
     max-width: 60%;
     height: 30px;
     width: 50%;
-    background-color: #90EE91;
+    background-color: var(--post-bg-color);
     border-radius: 1rem;
     border-color: aliceblue;
-    color: darkgreen;
+    color: var(post-text-color);
 }
 
 .contentInput {
-    border-radius: 1rem;
+    border-radius: .3rem;
     width: auto;
 }
 
@@ -158,8 +166,8 @@
 }
 
 input[type=file]::file-selector-button {
-    color: darkgreen;
-    background-color: #90EE91;
+    color: var(--post-text-color);
+    background-color: var(--post-bg-color);
     border-radius: 1rem;
     border-color: aliceblue;
     height: 30px;
@@ -194,7 +202,7 @@ input[type=file]::file-selector-button {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: lightgreen;
+    background-color: var(--post-bg-color);
     min-width: 160px;
     overflow: auto;
     right: 0;
@@ -215,7 +223,7 @@ input[type=file]::file-selector-button {
 /* Change color of dropdown links on hover */
 
 .dropdown-content a:hover {
-    background-color: greenyellow;
+    background-color: var(--post-bg-color);
 }
 
 

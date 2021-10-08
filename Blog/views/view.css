@@ -1,17 +1,25 @@
+:root {
+    --view-text-color: black;
+    --view-bg-color: #FFDFDF;
+    --background-image-temp: linear-gradient(120deg, white, #FFDFDF);
+    --box-shadow-temp: 2px 2px 3px #FFDFDF;
+    --box-shadow-temp-2: 2px 2px 3px grey, -2px -2px 3px lightgray;
+}
+
 .page {
     text-align: center;
-    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
-    color: darkgreen;
+    background-image: var(--background-image-temp);
+    color: var(--view-text-color);
 }
 
 .view_navbar_section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #90EE91;
+    background-color: var(--background-image-temp);
     padding: 1px;
     margin: 0 0 3em 0;
-    box-shadow: 2px 2px 3px green;
+    box-shadow: var(--box-shadow-temp-2);
     border-radius: 1rem;
 }
 
@@ -33,19 +41,19 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-image: linear-gradient(120deg, #E5F6DF, #ebf1eb);
-    color: darkgreen;
+    background-image: var(--background-image-temp);
+    color: var(--view-text-color);
 }
 
 .viewTitle {
-    color: darkgreen;
+    color: var(--view-text-color);
     text-shadow: 1px 1px 2px green;
     font-size: 5vw;
 }
 
 .viewJournal {
     color: black;
-    background-color: #E5F6DF;
+    background-color: var(--background-image-temp);
     text-align: left;
 }
 
@@ -57,5 +65,5 @@
 }
 
 .myBtn {
-    color: darkgreen;
+    color: var(--view-text-color);
 }
