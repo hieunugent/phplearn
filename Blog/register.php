@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="views/login.css">
+    <link rel="stylesheet" href="views/register.css">
     
 </head>
 <body class="page">
@@ -19,7 +19,7 @@
         <label class="label_register" for="Password">Password: </label>
         <label class="label_register" for="Password">Retype Password: </label>
         <input type="password" placeholder="Password">
-        <p> Or <a class="a-link"href="resigter.php" >Sign In</a> a User</p>
+        <p> Or <a class="a-link"href="login.php" >Sign In</a> a User</p>
     </div>
 
     </div>

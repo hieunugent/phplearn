@@ -19,7 +19,7 @@
         <label class="labellogin" for="Password">Password: </label>
       
         <input type="password" placeholder="Password">
-        <p> Or <a class="a-link"href="resigter.php" >Sign Up</a> a User</p>
+        <p> Or <a class="a-link"href="register.php" >Sign Up</a> a User</p>
     </div>
 
     </div>

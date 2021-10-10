@@ -26,5 +26,6 @@
 - UX for button done
 - add the timeStamp for data ok this work
 - do the ordering display on the web, the early comfirst: by adjust the filter and sort in mongodata retrieve
-
 - logging user, update so every one could see your post, but only you can edit and delete it, it must underyour username
+- 
+
