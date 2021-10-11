@@ -1,3 +1,7 @@
+<?php 
+require __DIR__ .'/vendor/autoload.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +16,18 @@
     <div class="register_area">
     <div class="register_page"> 
         <h3>Sign In</h3>
+        <form action="">
         <label class="label_register" for="Username"> User Name: </label>
-     
-        <input  type="text" placeholder="Username">
-  
+        <input  type="text" name="username" placeholder="Username">
         <label class="label_register" for="Password">Password: </label>
-
-        
-        <label class="label_register" for="Password">Retype Password: </label>
-        <input type="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
+        <br>
+        <label class="label_register"  for="Password">Retype Password: </label>
+        <input type="password" name="repassword" placeholder="retype Password">
+        <input type="submit" >
         <p> Or <a class="a-link"href="login.php" >Sign In</a> a User</p>
+        </form>
+      
     </div>
 
     </div>
