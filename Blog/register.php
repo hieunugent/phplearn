@@ -17,6 +17,8 @@
         <input  type="text" placeholder="Username">
   
         <label class="label_register" for="Password">Password: </label>
+
+        
         <label class="label_register" for="Password">Retype Password: </label>
         <input type="password" placeholder="Password">
         <p> Or <a class="a-link"href="login.php" >Sign In</a> a User</p>

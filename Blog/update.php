@@ -1,4 +1,5 @@
 <?php
+  require_once __DIR__ . '/includes/auth_check.php';
   echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
     require __DIR__ .'/vendor/autoload.php';
     $titleErr =$journalErr= '';
