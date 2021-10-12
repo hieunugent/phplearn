@@ -8,11 +8,11 @@
 .register_page {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 700px;
     max-height: 700px;
     min-width: 300px;
     min-height: 450px;
-    width: 40vw;
+    width: 50vw;
     height: 50vw;
     background-color: white;
     align-items: center;
@@ -26,7 +26,27 @@
 .label_register {
     margin-left: 0;
 }
-
+.line_input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.input_box{
+    margin-left: 20px;
+}
+.submit_input{
+    margin: 20px 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.prompt_line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px ;
+}
 .a-link {
     color: lightpink;
     text-decoration: none;

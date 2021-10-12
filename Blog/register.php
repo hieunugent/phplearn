@@ -1,5 +1,8 @@
 <?php 
 require __DIR__ .'/vendor/autoload.php';
+$username='';
+$password='';
+$connect = new MongoDB\Client("mongodb://localhost:27017");
 
 ?>
 <!DOCTYPE html>
@@ -16,16 +19,26 @@ require __DIR__ .'/vendor/autoload.php';
     <div class="register_area">
     <div class="register_page"> 
         <h3>Sign In</h3>
-        <form action="">
-        <label class="label_register" for="Username"> User Name: </label>
-        <input  type="text" name="username" placeholder="Username">
-        <label class="label_register" for="Password">Password: </label>
-        <input type="password" name="password" placeholder="Password">
-        <br>
-        <label class="label_register"  for="Password">Retype Password: </label>
-        <input type="password" name="repassword" placeholder="retype Password">
-        <input type="submit" >
+        <form action="register.php">
+        <div class="line_input">
+             <label class="label_register" for="Username"> User Name: </label>
+             <input class="input_box"  type="text" name="username" placeholder="Username">
+        </div>
+          <div class="line_input">
+             <label class="label_register" for="Password">Password: </label>
+             <input class="input_box" type="password" name="password" placeholder="Password">
+        </div>
+          <div class="line_input">
+              <label class="label_register"  for="Password">Retype Password: </label>
+              <input class="input_box" type="password" name="re_password" placeholder="retype Password">
+          </div>
+          <div class="submit_input"> 
+               <input type="submit" name="submit" >
+         </div>  
+        <div class="prompt_line">
         <p> Or <a class="a-link"href="login.php" >Sign In</a> a User</p>
+
+        </div>
         </form>
       
     </div>
