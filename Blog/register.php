@@ -1,12 +1,38 @@
 <?php 
 require __DIR__ .'/vendor/autoload.php';
-$username='';
-$password='';
+$username= $usernameErr='';
+$password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
+function checkpassword($passToCheck){
+    return True;
+}
+if($_SERVER['REQUEST_METHOD']="POST"){
+    if(isset($_POST['submit'])){
+         try{
+            if(empty($_POST['username'])){
+              $usernameErr = "username error";
+           }else{
+              $username = ($_POST["username"]);
+           }
+           if(empty($_POST['password'])){
+             $passwordErr = "password error";
+           }else{
+              
+             if (checkpassword($_POST["password"])){
+                    $password =$_POST["password"] ;
+                    var_dump("Ok for password ");
+             }
+            
+           } 
+        }catch(Exception $e){
+            var_dump("there is an error during register account");
+        }
+    }
+   
+}
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

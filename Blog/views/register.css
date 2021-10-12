@@ -33,13 +33,16 @@
     margin-bottom: 15px;
 }
 .input_box{
+    align-items: center;
     margin-left: 20px;
+    height: 1em;
 }
 .submit_input{
     margin: 20px 0 20px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    
 }
 .prompt_line{
     display: flex;
