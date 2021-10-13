@@ -3,7 +3,12 @@ require __DIR__ .'/vendor/autoload.php';
 $username= $usernameErr='';
 $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
-function checkpassword($passToCheck){
+function checkpassword($pass1,$pass2 ){
+    if (strlen($pass1) < 4 || strlen($pass1 >16)){
+        $passwordErr = " Password length is not between 4 and 16 letters";
+        return false;
+    }
+
     return True;
 }
 if($_SERVER['REQUEST_METHOD']="POST"){
@@ -13,19 +18,19 @@ if($_SERVER['REQUEST_METHOD']="POST"){
               $usernameErr = "username error";
            }else{
               $username = ($_POST["username"]);
+              var_dump("Sucessfull usename entering");
            }
-           if(empty($_POST['password'])){
+            if(empty($_POST['password'])){
              $passwordErr = "password error";
            }else{
-              
-             if (checkpassword($_POST["password"])){
+             if (checkpassword($_POST["password"], $_POST['re_password'])){
                     $password =$_POST["password"] ;
                     var_dump("Ok for password ");
              }
             
            } 
         }catch(Exception $e){
-            var_dump("there is an error during register account");
+            die("there is an error during register account");
         }
     }
    
@@ -45,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']="POST"){
     <div class="register_area">
     <div class="register_page"> 
         <h3>Sign In</h3>
-        <form action="register.php">
+        <form action="register.php" method="post">
         <div class="line_input">
              <label class="label_register" for="Username"> User Name: </label>
              <input class="input_box"  type="text" name="username" placeholder="Username">
