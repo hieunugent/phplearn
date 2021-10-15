@@ -22,6 +22,12 @@
 
 - single Read page:
 - DataBase: using mongodb
+# user data require:
+ - username must be unique: need to have a function to check unique data.
+ - username no special character are allowed.
+ - username length restriction.
+ - password display weak , strong, strongest password
+ - password must content some restriction, e.g. Capitalize, number, speacial character
 # NOTE:
 - to read data with ID on mongodb , we need to cast it in to new MongoDB\BSON\ObjectId($value), this way make the string that we pass in php will have same class with string ID on mongoDB ID 
 - name of attribute is value for get/post server

@@ -1,5 +1,6 @@
 <?php 
 require __DIR__ .'/vendor/autoload.php';
+$pepper = "c1isvFdxMDdmjOlvxpecFw";
 $username= $usernameErr='';
 $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
@@ -40,16 +41,17 @@ if($_SERVER['REQUEST_METHOD']="POST"){
              }
             
            } 
-           if (usernameErr =='' and passwordErr==''){
+           if ($usernameErr =='' && $passwordErr==''){
             $db = $connect->mongophp->users;
+            $pwd_pepper = hash_hmac('sha256', $password, $pepper);
+            $pwd_hashed = password_hash($pwd_pepper, PASSWORD_ARGON2ID);
             $result = $db->insertOne([
                 "username"=>$username,
-                "password"=> $password
+                "password"=> $pwd_hashed,
               ]);
+            header('location:login.php');
+
            }
-
-
-
         }catch(Exception $e){
             die("there is an error during register account");
         }
