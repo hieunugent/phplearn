@@ -4,6 +4,22 @@ $pepper = "c1isvFdxMDdmjOlvxpecFw";
 $username= $usernameErr='';
 $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
+$db = $connect->mongophp->users;
+function validUsername($usr){
+    if(strlen($usr)< 4 || strlen($user) > 25){
+        $usernameErr="the length of username is not right";
+        return False;
+    }
+    
+    $result = $db->findOne(['username'=>$usr]);
+    echo $result;
+    if ($result){
+        $usernameErr="the username has been taken, please choose others";
+        return False;
+    }
+    return True;
+    
+}
 function checkpassword($pass1,$pass2 ){
     // check pass length 
     if(strlen($pass1) != strlen($pass2)){
@@ -17,7 +33,7 @@ function checkpassword($pass1,$pass2 ){
     }
     // check if it contain all letter andn number is require
     if (strlen($pass1) < 4 || strlen($pass1)> 16){
-        $passwordErr = " Password length is not between 4 and 16 letters";
+        $passwordErr = "Password length is not between 4 and 16 letters";
         return false;
     }
     // if notthing wrong return true
@@ -42,7 +58,7 @@ if($_SERVER['REQUEST_METHOD']="POST"){
             
            } 
            if ($usernameErr =='' && $passwordErr==''){
-            $db = $connect->mongophp->users;
+          
             $pwd_pepper = hash_hmac('sha256', $password, $pepper);
             $pwd_hashed = password_hash($pwd_pepper, PASSWORD_ARGON2ID);
             $result = $db->insertOne([
@@ -50,7 +66,10 @@ if($_SERVER['REQUEST_METHOD']="POST"){
                 "password"=> $pwd_hashed,
               ]);
             header('location:login.php');
-
+           }
+           else{
+               echo $usernameErr . "<br>";
+               echo $passwordErr . "<br>";
            }
         }catch(Exception $e){
             die("there is an error during register account");
