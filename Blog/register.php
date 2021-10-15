@@ -4,11 +4,22 @@ $username= $usernameErr='';
 $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 function checkpassword($pass1,$pass2 ){
-    if (strlen($pass1) < 4 || strlen($pass1 >16)){
+    // check pass length 
+    if(strlen($pass1) != strlen($pass2)){
+        $passwordErr= "String length retype not match ";
+        return FALSE;
+    }
+    // check pass retype is the same
+    if($pass1 != $pass2){
+        $passwordErr= "String  retype not match ";
+        return FALSE;
+    }
+    // check if it contain all letter andn number is require
+    if (strlen($pass1) < 4 || strlen($pass1)> 16){
         $passwordErr = " Password length is not between 4 and 16 letters";
         return false;
     }
-
+    // if notthing wrong return true
     return True;
 }
 if($_SERVER['REQUEST_METHOD']="POST"){
@@ -29,6 +40,16 @@ if($_SERVER['REQUEST_METHOD']="POST"){
              }
             
            } 
+           if (usernameErr =='' and passwordErr==''){
+            $db = $connect->mongophp->users;
+            $result = $db->insertOne([
+                "username"=>$username,
+                "password"=> $password
+              ]);
+           }
+
+
+
         }catch(Exception $e){
             die("there is an error during register account");
         }
