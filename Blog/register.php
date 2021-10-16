@@ -6,13 +6,13 @@ $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
 function validUsername($usr){
-    if(strlen($usr)< 4 || strlen($user) > 25){
+    if(strlen($usr)< 4 || strlen($usr) > 25){
         $usernameErr="the length of username is not right";
         return False;
     }
-    
+    $connect = new MongoDB\Client("mongodb://localhost:27017");
+    $db = $connect->mongophp->users;
     $result = $db->findOne(['username'=>$usr]);
-    echo $result;
     if ($result){
         $usernameErr="the username has been taken, please choose others";
         return False;
