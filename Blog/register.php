@@ -5,9 +5,10 @@ $username= $usernameErr='';
 $password= $passwordErr="";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
-function validUsername($usr){
+function validUsername($usr, $usernameErr){
     if(strlen($usr)< 4 || strlen($usr) > 25){
         $usernameErr="the length of username is not right";
+        // echo $usernameErr;
         return False;
     }
     $connect = new MongoDB\Client("mongodb://localhost:27017");
@@ -15,28 +16,32 @@ function validUsername($usr){
     $result = $db->findOne(['username'=>$usr]);
     if ($result){
         $usernameErr="the username has been taken, please choose others";
+        //  echo $usernameErr;
         return False;
     }
     return True;
     
 }
-function checkpassword($pass1,$pass2 ){
+function checkpassword($pass1,$pass2, $passwordErr){
     // check pass length 
     if(strlen($pass1) != strlen($pass2)){
-        $passwordErr= "String length retype not match ";
+        $passwordErr= "String length retype not match";
+        // echo $passwordErr;
         return FALSE;
     }
     // check pass retype is the same
     if($pass1 != $pass2){
         $passwordErr= "String  retype not match ";
+    //    echo $passwordErr;
         return FALSE;
     }
-    // check if it contain all letter andn number is require
-    if (strlen($pass1) < 4 || strlen($pass1)> 16){
+    // check if it contain all letter and number is require
+    if (strlen($pass1) < 4 || strlen($pass1) > 16){
         $passwordErr = "Password length is not between 4 and 16 letters";
-        return false;
+        //  echo $passwordErr;
+        return False;
     }
-    // if notthing wrong return true
+    //
     return True;
 }
 if($_SERVER['REQUEST_METHOD']="POST"){
@@ -44,20 +49,27 @@ if($_SERVER['REQUEST_METHOD']="POST"){
          try{
             if(empty($_POST['username'])){
               $usernameErr = "username error";
+            //   echo 'username can not be empty';
            }else{
-              $username = ($_POST["username"]);
-              var_dump("Sucessfull usename entering");
+              if (validUsername($_POST['username'], $usernameErr)){
+                $username = $_POST["username"];
+                // echo "Sucessfull usename entering";
+              }else{
+                  
+              }
+
+             
            }
             if(empty($_POST['password'])){
              $passwordErr = "password error";
            }else{
-             if (checkpassword($_POST["password"], $_POST['re_password'])){
+             if (checkpassword($_POST["password"], $_POST['re_password'], $passwordErr)){
                     $password =$_POST["password"] ;
-                    var_dump("Ok for password ");
+                    // echo "Ok for password ";
              }
             
            } 
-           if ($usernameErr =='' && $passwordErr==''){
+           if ($username!= ''&& $password !=''){
           
             $pwd_pepper = hash_hmac('sha256', $password, $pepper);
             $pwd_hashed = password_hash($pwd_pepper, PASSWORD_ARGON2ID);
@@ -67,10 +79,7 @@ if($_SERVER['REQUEST_METHOD']="POST"){
               ]);
             header('location:login.php');
            }
-           else{
-               echo $usernameErr . "<br>";
-               echo $passwordErr . "<br>";
-           }
+
         }catch(Exception $e){
             die("there is an error during register account");
         }
@@ -93,6 +102,14 @@ if($_SERVER['REQUEST_METHOD']="POST"){
     <div class="register_page"> 
         <h3>Sign In</h3>
         <form action="register.php" method="post">
+        <?php
+            if($passwordErr || $usernameErr){ ?>
+                <div> 
+                    <p> <?php echo $usernameErr ?> </p>
+                    <p> <?php echo $passwordErr ?>  </P>
+                </div>
+        <?php    }
+        ?>
         <div class="line_input">
              <label class="label_register" for="Username"> User Name: </label>
              <input class="input_box"  type="text" name="username" placeholder="Username">

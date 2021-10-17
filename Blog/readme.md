@@ -39,3 +39,9 @@
 - logging user, update so everyone could see your post, but only you can edit and delete it, it must under your username
 - 
 
+# log: 
+Stack(
+    children: [
+        
+    ]
+)
