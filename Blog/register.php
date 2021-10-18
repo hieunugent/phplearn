@@ -55,10 +55,7 @@ if($_SERVER['REQUEST_METHOD']="POST"){
               if (validUsername($_POST['username'], $usernameErr)){
                 $username = $_POST["username"];
                 // echo "Sucessfull usename entering";
-              }else{
-                  
               }
-
              
            }
             if(empty($_POST['password'])){
