@@ -1,13 +1,14 @@
 <?php 
 require __DIR__ .'/vendor/autoload.php';
 $pepper = "c1isvFdxMDdmjOlvxpecFw";
-$username= $usernameErr='';
-$password= $passwordErr="";
+$username= '';
+$usernameErr = $passwordErr='';
+$password= '';
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
-function validUsername($usr, $usernameErr){
+function validUsername($usr){
     if(strlen($usr)< 4 || strlen($usr) > 25){
-        $usernameErr="the length of username is not right";
+        $GLOBALS['usernameErr']="the length of username is not right";
         // echo $usernameErr;
         return False;
     }
@@ -15,29 +16,29 @@ function validUsername($usr, $usernameErr){
     $db = $connect->mongophp->users;
     $result = $db->findOne(['username'=>$usr]);
     if ($result){
-        $usernameErr="the username has been taken, please choose others";
+        $GLOBALS['usernameErr']="the username has been taken, please choose others";
         //  echo $usernameErr;
         return False;
     }
     return True;
     
 }
-function checkpassword($pass1,$pass2, $passwordErr){
+function checkpassword($pass1,$pass2){
     // check pass length 
     if(strlen($pass1) != strlen($pass2)){
-        $passwordErr= "String length retype not match";
+        $GLOBALS['passwordErr']= "String length retype not match";
         // echo $passwordErr;
         return FALSE;
     }
     // check pass retype is the same
     if($pass1 != $pass2){
-        $passwordErr= "String  retype not match ";
+        $GLOBALS['passwordErr']= "String  retype not match ";
     //    echo $passwordErr;
         return FALSE;
     }
     // check if it contain all letter and number is require
     if (strlen($pass1) < 4 || strlen($pass1) > 16){
-        $passwordErr = "Password length is not between 4 and 16 letters";
+        $GLOBALS['passwordErr']= "Password length is not between 4 and 16 letters";
         //  echo $passwordErr;
         return False;
     }
@@ -61,7 +62,7 @@ if($_SERVER['REQUEST_METHOD']="POST"){
              
            }
             if(empty($_POST['password'])){
-             $passwordErr = "password error";
+             $GLOBALS['passwordErr'] = "password error";
            }else{
              if (checkpassword($_POST["password"], $_POST['re_password'], $passwordErr)){
                     $password =$_POST["password"] ;
