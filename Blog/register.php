@@ -6,6 +6,9 @@ $usernameErr = $passwordErr='';
 $password= '';
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
+// get the result from user find
+// but we have to secure the info that need to compare
+// can not let the info is found easy by haker
 function validUsername($usr){
     if(strlen($usr)< 4 || strlen($usr) > 25){
         $GLOBALS['usernameErr']="the length of username is not right";
