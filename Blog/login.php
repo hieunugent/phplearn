@@ -6,12 +6,13 @@ $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
 // get the result from user find
 // but we have to secure the info that need to compare
-// can not let the info is found easy by haker
+// can not let the info is found easy by hacker
 if ($_SERVER['REQUEST_METHOD']=='POST'){
 
     if ($_POST['username']!= ''){
         $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
-        $db->authenticate($_POST['username'],$pwd_pepper2);
+        $user = $users->findOne(['username'=>$_POST['username']]);
+        echo $user;
         echo $db;
     }
 
