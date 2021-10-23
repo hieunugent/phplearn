@@ -7,13 +7,13 @@ $db = $connect->mongophp->users;
 // get the result from user find
 // but we have to secure the info that need to compare
 // can not let the info is found easy by hacker
-if ($_SERVER['REQUEST_METHOD']=='POST'){
+if (isset($_POST['submit'])){
 
     if ($_POST['username']!= ''){
         $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
-        $user = $users->findOne(['username'=>$_POST['username']]);
-        echo $user;
-        echo $db;
+        $user = $db->findOne(['username'=>$_POST['username']]);
+     
+        echo $user->username;
     }
 
 }
@@ -38,16 +38,18 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     <div class="loginpage"> 
         <h3>Sign In</h3>
         
-
+        <form action="login.php" method="post">
         <label class="labellogin" for="Username"> User Name: </label>
      
-        <input  type="text" placeholder="Username">
+        <input  type="text" placeholder="Username" name='username'>
   
         <label class="labellogin" for="Password">Password: </label>
       
-        <input type="password" placeholder="Password">
-        <input type="submit" name="signIn">
+        <input type="password" placeholder="Password" name='password'>
+        <input type="submit" name="submit">
 
+        </form>
+        
    
         
         <p> Or <a class="a-link"href="register.php" >Sign Up</a> a User</p>
