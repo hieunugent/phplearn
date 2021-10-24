@@ -1,6 +1,7 @@
 <?php 
 
 require __DIR__ .'/vendor/autoload.php';
+
 $pepper = "c1isvFdxMDdmjKOlvxpecFw";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
@@ -9,15 +10,13 @@ $db = $connect->mongophp->users;
 // can not let the info is found easy by hacker
 if (isset($_POST['submit'])){
 
-    if ($_POST['username']!= ''){
+    if ($_POST['username']!='' && $_POST['password']!=''){
         $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
-
         $user = $db->findOne(['username'=>$_POST['username']]);
         echo $pwd_pepper2 . "<br>";
         echo $user['password'];
         if ($user){
             if ( password_verify($pwd_pepper2,$user['password'])){
-                 
                 session_start();
                 $_SESSION['username'] = $_POST['username'];
                 header('location:main.php');
