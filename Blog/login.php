@@ -19,9 +19,9 @@ if (isset($_POST['submit'])){
         //     echo "notfound any";
         // }
         if (password_verify($pwd_pepper2, $pwd_hashed)){
-                 echo "Password matches";
+                 $_SESSION['userid'] = $user->username;
         }else{
-                  echo "Password incorrect";
+                 echo "Password incorrect";
         }
       
 
