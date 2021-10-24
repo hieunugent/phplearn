@@ -23,7 +23,7 @@ $option = ['cost'=> 9, 'salt'=>'thisismystring'];
 $password = "password";
 // $pepper= getConfigVariable("pepper");
 
-$pepper = "c1isvFdxMDdmjOlvxpecFw";
+$pepper = "c1isvFdxMDdmjKOlvxpecFw";
 echo $pepper . "<br>";
 $pwd_pepper = hash_hmac('sha256', $password, $pepper);
 echo "password: ". $pwd_pepper ."<br>";

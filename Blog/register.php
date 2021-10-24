@@ -1,15 +1,11 @@
 <?php 
 require __DIR__ .'/vendor/autoload.php';
-$pepper = "c1isvFdxMDdmjOlvxpecFw";
+$pepper = "c1isvFdxMDdmjKOlvxpecFw";
 $username= '';
 $usernameErr = $passwordErr='';
 $password= '';
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
-
-
-
-
 
 function validUsername($usr){
     if(strlen($usr)< 4 || strlen($usr) > 25){

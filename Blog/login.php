@@ -1,7 +1,7 @@
 <?php 
 
 require __DIR__ .'/vendor/autoload.php';
-$pepper = "c1isvFdxMDdmjOlvxpecFw";
+$pepper = "c1isvFdxMDdmjKOlvxpecFw";
 $connect = new MongoDB\Client("mongodb://localhost:27017");
 $db = $connect->mongophp->users;
 // get the result from user find
@@ -11,22 +11,29 @@ if (isset($_POST['submit'])){
 
     if ($_POST['username']!= ''){
         $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
-        $user = $db->findOne(['username'=>$_POST['username']]);
 
+        $user = $db->findOne(['username'=>$_POST['username']]);
+        echo $pwd_pepper2 . "<br>";
+        echo $user['password'];
+        if ($user){
+            if ( password_verify($pwd_pepper2,$user['password'])){
+                 
+                session_start();
+                $_SESSION['username'] = $_POST['username'];
+                header('location:main.php');
+                echo "password correct";
+            }else{
+                echo "password is wrong";
+            }
         // if ($user){
         //     echo $user->password;
         // }else{
         //     echo "notfound any";
         // }
-        if (password_verify($pwd_pepper2, $pwd_hashed)){
-                 $_SESSION['userid'] = $user->username;
-        }else{
-                 echo "Password incorrect";
-        }
       
 
     }
-
+    }
 }
 
 ?>
@@ -48,8 +55,6 @@ if (isset($_POST['submit'])){
     <form action="login.php" method="post">
     <div class="loginpage"> 
         <h3>Sign In</h3>
-
-        
         <form action="login.php" method="post">
         <label class="labellogin" for="Username"> User Name: </label>
      
@@ -61,11 +66,6 @@ if (isset($_POST['submit'])){
         <input type="submit" name="submit">
 
         </form>
-        
-   
-        
-
- 
         <p> Or <a class="a-link"href="register.php" >Sign Up</a> a User</p>
     </div>
     </form>
