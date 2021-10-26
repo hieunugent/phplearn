@@ -1,6 +1,8 @@
 :root {
     --post-text-color: black;
-    --post-bg-color: #FFDFDF;
+    /* --post-bg-color: #FFDFDF; */
+    --post-bg-color: white;
+
     --background-image-temp: linear-gradient(120deg, white, #FFDFDF);
     --box-shadow-temp: 2px 2px 3px #FFDFDF;
     --box-shadow-temp-2: 2px 2px 3px grey, -2px -2px 3px lightgray;
