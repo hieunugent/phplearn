@@ -27,7 +27,8 @@
  - username must have/haven't special characters
  - username length restriction.
  - password status: weakest or strongest
- - password restriction, such as Capitalize, Number, special characters(which should be allowed)
+ - password res
+ - using third AUth for now it can take care some hassle
 # NOTE:
 - to read data with ID on MongoDB, we need to cast it into new MongoDB\BSON\ObjectId($value).
 - name of an attribute is the value for "the GET /POST" server
@@ -37,4 +38,6 @@
 - add the timestamp for data in MongoDB
 - do the ordering display on the web, the early come first: by modifying the filter and sort in MongoDb retrieve
 - logging user, update so everyone could see your post, but only you can edit and delete it, and it's under your username
+
 # log: 
+- 
