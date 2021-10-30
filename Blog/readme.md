@@ -28,8 +28,8 @@
  - username length restriction.
  - password status: weakest or strongest
  - password res
- - using third AUth for now it can take care some hassle
-# NOTE:
+ - using Auth of Google for now, and it can take care of the hassle.
+ # NOTE:
 - to read data with ID on MongoDB, we need to cast it into new MongoDB\BSON\ObjectId($value).
 - name of an attribute is the value for "the GET /POST" server
 - CRUD
