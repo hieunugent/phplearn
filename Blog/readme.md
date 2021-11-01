@@ -38,3 +38,4 @@
 - do the ordering display on the web, the early come first: by modifying the filter and sort in MongoDb retrieve
 - logging user, update so everyone could see your post, but only you can edit and delete it, and it's under your username
 # log: 
+- update NGINX
