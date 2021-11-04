@@ -38,6 +38,8 @@
 - add the timestamp for data in MongoDB
 - do the ordering display on the web, the early come first: by modifying the filter and sort in MongoDb retrieve
 - logging user, update so everyone could see your post, but only you can edit and delete it, and it's under your username
-
 # log: 
-- 
+- update NGINX
+- NGINX PLUS Admin GUIDE
+- https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/?_ga=2.115856449.611436112.1636041269-804012040.1636041269
+
