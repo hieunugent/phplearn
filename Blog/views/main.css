@@ -1,7 +1,7 @@
 :root {
     --main-text-color: black;
     --main_background-color: white;
-    --background-image-temp: linear-gradient(120deg, white, #FFDFDF);
+    --background-image-temp: linear-gradient(120deg, white, white);
     --box-shadow-temp: 2px 2px 3px white;
     --box-shadow-temp-2: 2px 2px 3px grey, -2px -2px 3px lightgray;
 }
@@ -25,7 +25,7 @@
     background-color: var(--main_background-color);
     padding: 1px;
     margin: 0 0 3em 0;
-    box-shadow: var(--box-shadow-temp);
+    box-shadow: var(--box-shadow-temp-2);
     border-radius: 1rem;
 }
 
