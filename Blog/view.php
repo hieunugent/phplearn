@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <?php
 
-
+require __DIR__. '/database.php';
 // echo $_SERVER['REQUEST_METHOD'] . "<br> <hr>";
 require __DIR__ .'/vendor/autoload.php';
-require_once __DIR__ . '/includes/auth_check.php';
-$connect = new MongoDB\Client("mongodb://localhost:27017");
+// require_once __DIR__ . '/includes/auth_check.php';
+use DevCoder\DotEnv;
+
+       (new DotEnv(__DIR__ . '/.env'))->load();
+    
+       $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 $db=$connect->mongophp->detail;
 if(isset($_GET["valueId"])){
 $idUpdate = $_GET["valueId"];
