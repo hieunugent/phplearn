@@ -15,9 +15,7 @@
             // echo "SUCCESS  Delete  <br>" ;
             printf("Delele % d document(s) \n", $result->getDeletedCount());
         }catch(Exception $e){
-            echo "Error when Delete" . $e;  }
-  
-    
+            echo "Error when Delete" . $e;  }  
 ?>
 
 <hr>

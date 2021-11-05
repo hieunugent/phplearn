@@ -1,8 +1,7 @@
 <?php
   require __DIR__ .'/vendor/autoload.php';
   // require_once __DIR__ . '/includes/auth_check.php';
-  require __DIR__ .'/utility.php';
-  
+  require __DIR__ .'/utility.php'; 
 ?>
 <html>
     <head>
@@ -10,7 +9,6 @@
           function myFunction(value) {
             document.getElementById(value).classList.toggle("show");          
         }
-
     </script>
     <style>
       .myBtn{
