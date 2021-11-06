@@ -46,4 +46,4 @@
 - Frontend Server (Svelte) - Black Box - Backend Server (Node.js), DataServer(Oracle)
 - in the BlacBox must be some connect engine such as NGINX
 - NGINX where pineline in update as server change
-# 
+- use Oracle to beVM of the website
