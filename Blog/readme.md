@@ -43,7 +43,8 @@
 - NGINX PLUS Admin GUIDE
 - https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/?_ga=2.115856449.611436112.1636041269-804012040.1636041269
 # E_Z Solution analogy 
-- Frontend Server (Svelte) - Black Box - Backend Server (Node.js), DataServer(Oracle)
-- in the BlacBox must be some connect engine such as NGINX
+- Frontend Server (Svelte) - Middle ware- Backend Server (Node.js), DataServer(Oracle)
+- in the Middle ware must be some connect engine such as NGINX
 - NGINX where pineline in update as server change
 - use Oracle to beVM of the website
+- aws service
