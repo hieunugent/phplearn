@@ -48,3 +48,4 @@
 - NGINX where pineline in update as server change
 - use Oracle to beVM of the website
 - aws service
+- install NGINX in VM 
