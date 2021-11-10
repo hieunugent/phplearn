@@ -49,3 +49,4 @@
 - use Oracle to beVM of the website
 - aws service
 - install NGINX in VM 
+- check version and make sure it been install in the VM Server
