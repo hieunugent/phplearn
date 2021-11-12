@@ -50,3 +50,4 @@
 - aws service
 - install NGINX in VM 
 - check version and make sure it been install in the VM Server
+# problem connect to MONgodb Server 
