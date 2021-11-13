@@ -10,29 +10,31 @@ $db = $connect->mongophp->users;
 // can not let the info is found easy by hacker
 if (isset($_POST['submit'])){
 
-    if ($_POST['username']!='' && $_POST['password']!=''){
-        $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
-        $user = $db->findOne(['username'=>$_POST['username']]);
-        echo $pwd_pepper2 . "<br>";
-        echo $user['password'];
-        if ($user){
-            if ( password_verify($pwd_pepper2,$user['password'])){
-                session_start();
-                $_SESSION['username'] = $_POST['username'];
-                header('location:main.php');
-                echo "password correct";
-            }else{
-                echo "password is wrong";
-            }
-        // if ($user){
-        //     echo $user->password;
-        // }else{
-        //     echo "notfound any";
-        // }
+    // if ($_POST['username']!='' && $_POST['password']!=''){
+    //     // $pwd_pepper2 = hash_hmac('sha256', $_POST['password'],"c1isvFdxMDdmjKOlvxpecFw");
+    //     // $user = $db->findOne(['username'=>$_POST['username']]);
+    //     // echo $pwd_pepper2 . "<br>";
+    //     // echo $user['password'];
+    //     // if ($user){
+    //     //     if ( password_verify($pwd_pepper2,$user['password'])){
+    //     //         session_start();
+    //     //         $_SESSION['USER'] = $_POST['username'];
+    //     //         header('location:main.php');
+    //     //         echo "password correct";
+    //     //     }else{
+    //     //         echo "password is wrong";
+    //         }
+    //     // if ($user){
+    //     //     echo $user->password;
+    //     // }else{
+    //     //     echo "notfound any";
+    //     // }
       
 
-    }
-    }
+    // }
+    // }
+    $_SESSION['USER']=$_POST['username'];
+    $_SESSION['PASSWORD'] = $_POST['password'];
 }
 
 ?>
