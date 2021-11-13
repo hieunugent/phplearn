@@ -7,9 +7,15 @@ require __DIR__ .'/vendor/autoload.php';
 // require_once __DIR__ . '/includes/auth_check.php';
 use DevCoder\DotEnv;
 
-       (new DotEnv(__DIR__ . '/.env'))->load();
+(new DotEnv(__DIR__ . '/.env'))->load();
     
-       $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+$connect = "";
+if (getenv('DATABASE_URL')){
+ $connect = new MongoDB\Client(getenv('DATABASE_URL'));
+}else{
+ $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+}
+// $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 $db=$connect->mongophp->detail;
 if(isset($_GET["valueId"])){
 $idUpdate = $_GET["valueId"];

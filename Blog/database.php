@@ -46,3 +46,4 @@ class DotEnv
 use DevCoder\DotEnv;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
+
