@@ -1,63 +1,66 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-// require_once __DIR__ . '/includes/auth_check.php';
-require __DIR__. '/database.php';
-require __DIR__ . '/utility.php';
+  require __DIR__ .'/vendor/autoload.php';
+  // require_once __DIR__ . '/includes/auth_check.php';
+  require __DIR__ .'/utility.php'; 
+  require_once __DIR__. '/database.php';
 ?>
 
 
 <html>
-
-<head>
-  <script>
-    function myFunction(value) {
-      document.getElementById(value).classList.toggle("show");
-    }
-  </script>
-  <style>
-    .myBtn {
-      text-decoration: none;
-    }
-
-    .logoimage {
-      width: 40px;
-      height: 40px;
-      border-radius: 2rem
-    }
-  </style>
-  <link rel="stylesheet" href="views/main.css">
-</head>
-
-<body class="page">
-  <div class="main_navbar_section">
-    <div class="main_navTilte">
-      <h3>My Blog</h3>
-    </div>
-    <div class="main_navLogo">
-      <img class="logoimage" src="/uploads/blog.jpg" alt="logo">
-    </div>
-
-    <a class="main_navBtnA" href="post.php">ADD</a>
-  </div>
-  <div class="mainpage">
-    <?php
+    <head>
+    <script>
+          function myFunction(value) {
+            document.getElementById(value).classList.toggle("show");          
+        }
+    </script>
+    <style>
+      .myBtn{
+        text-decoration:none;
+      }
+      .logoimage{
+        width: 40px;
+        height: 40px;
+        border-radius:2rem
+      }
+    
+    </style>
+     <link rel="stylesheet" href="views/main.css">
+    </head>
+   <body class="page">
+       <div class="main_navbar_section">
+              <div class="main_navTilte">
+                  <h3 >My Blog</h3>
+              </div>
+              <div class="main_navLogo" >
+                    <img class="logoimage" src="/uploads/blog.jpg" alt="logo">
+              </div>
+              
+                  <a class="main_navBtnA" href="post.php" >ADD</a>    
+       </div>
+       <div class="mainpage">
+       <?php
 
 
-    use DevCoder\DotEnv;
-
-    (new DotEnv(__DIR__ . '/.env'))->load();
-
-    $connect = new MongoDB\Client("mongodb+srv://" . getenv('USER') . ":" . getenv('PASSWORD') . "@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-    $db = $connect->mongophp->detail;
-    $cursor = $db->find([], ['sort' => ['timestamp' => -1]]);
-
-    if (isset($_GET["vardelete"])) {
-      deleteOneElement($_GET["vardelete"]);
-      header("location:main.php");
-    }
-
-    foreach ($cursor as $obj) { ?>
-      <div class="main_displayItem">
+      
+       $connect = "";
+       if (getenv('DATABASE_URL')){
+        $connect = new MongoDB\Client(getenv('DATABASE_URL'));
+       }else{
+        $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+       }
+       
+       
+      
+       $db=$connect->mongophp->detail;
+       $cursor = $db->find([], ['sort'=>['timestamp'=>-1]]);
+       
+       if(isset($_GET["vardelete"])){
+         deleteOneElement($_GET["vardelete"]);
+         header("location:main.php");
+       }
+      
+       foreach ($cursor as $obj){ ?>
+        <div class="main_displayItem">
         <!-- <h3><?php echo $obj["_id"] ?></h3> -->
         <div class="main_topdisplayItem">
           <h3 class="main_titleOutput"><?php echo $obj["title"] ?></h3>

@@ -1,16 +1,17 @@
 
 <?php 
- require __DIR__ .'/vendor/autoload.php';
+require __DIR__ .'/vendor/autoload.php';
 //  require_once __DIR__ . '/includes/auth_check.php';
-require __DIR__. '/database.php';
+require_once __DIR__. '/database.php';
  $title = $titleErr = '';
  $journal = $journalErr='';
- $image ="";
- use DevCoder\DotEnv;
-
-       (new DotEnv(__DIR__ . '/.env'))->load();
-    
-       $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+ $image ="";  
+       $connect = "";
+       if (getenv('DATABASE_URL')){
+        $connect = new MongoDB\Client(getenv('DATABASE_URL'));
+       }else{
+        $connect = new MongoDB\Client("mongodb+srv://". getenv('USER').":". getenv('PASSWORD') ."@cluster0.wthhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+       }
  
 ?>
 
