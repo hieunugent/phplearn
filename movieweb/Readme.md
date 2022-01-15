@@ -4,4 +4,8 @@
 - Users Free Subscribe, don't need to Sign In to watch, estimate 20M users
 # data Type: 
 - Video clips: 1hr length average * 30GB/ Hr * 10K items = 300TB
-- 
+-
+# Choose of Language: 
+- database: PostgreSQL
+- backend : python nodejs
+- Website language : JS, HTML, CSS with platform React
